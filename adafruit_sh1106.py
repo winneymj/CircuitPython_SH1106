@@ -232,8 +232,13 @@ class SH1106_SPI(_SH1106):
                  external_vcc=False, baudrate=8000000, polarity=0, phase=0):
         self.rate = 10 * 1024 * 1024
         dc.switch_to_output(value=0)
-        self.spi_device = spi_device.SPIDevice(spi, cs, baudrate=baudrate,
-                                               polarity=polarity, phase=phase)
+        self.spi_bus = spi
+        self.spi_bus.try_lock()
+        self.spi_bus.configure(baudrate=baudrate, polarity=polarity, phase=phase)
+        self.spi_bus.unlock()
+
+#        self.spi_device = spi_device.SPIDevice(spi, cs, baudrate=baudrate,
+#                                               polarity=polarity, phase=phase)
         self.dc_pin = dc
         self.buffer = bytearray((height // 8) * width)
         framebuffer = framebuf.FrameBuffer1(self.buffer, width, height)
@@ -242,12 +247,14 @@ class SH1106_SPI(_SH1106):
     def write_cmd(self, cmd):
         """Send a command to the SPI device"""
         self.dc_pin.value = 0
-        with self.spi_device as spi:
-            spi.write(bytearray([cmd]))
+        self.spi_bus.try_lock()
+        self.spi_bus.write(bytearray([cmd]))
 
     def write_framebuf(self):
         """write to the frame buffer via SPI"""
-        localBuffer = bytearray(self.width);
+
+        self.spi_bus.try_lock()
+        spi_write = self.spi_bus.write
 
         for page in range(0, 8): # Pages
             page_mult = (page << 7)
@@ -256,11 +263,6 @@ class SH1106_SPI(_SH1106):
             self.write_cmd(0x10) # set higher column address
             
             self.dc_pin.value = 1
-            with self.spi_device as spi:
-                spi_write = spi.write
-                for pixel in range (0, self.width):
-                    # Build buffer to send
-                    localBuffer[pixel] = self.buffer[page_mult + pixel]
-                
-                # Send the buffer
-                spi_write(localBuffer)
+            spi_write(self.buffer, start=page_mult, end=page_mult + self.width)
+        
+        self.spi_bus.unlock()
