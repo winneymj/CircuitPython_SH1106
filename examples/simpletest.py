@@ -4,32 +4,38 @@
 # License: Public Domain
 
 # Import all board pins.
-from board import SCL, SDA
+import board
+import digitalio
 import busio
 
-# Import the SSD1306 module.
-import adafruit_ssd1306
+# Import the SH1106 module.
+import adafruit_sh1106
 
+# Setup the SPI pins
+dc = digitalio.DigitalInOut(board.A22)
+reset = digitalio.DigitalInOut(board.A23)
+cs = digitalio.DigitalInOut(board.A27)
 
-# Create the I2C interface.
-i2c = busio.I2C(SCL, SDA)
+# Create the SPI interface.
+spi_bus = busio.SPI(board.SCK, board.MOSI)
 
 # Create the SSD1306 OLED class.
 # The first two parameters are the pixel width and pixel height.  Change these
 # to the right size for your display!
-display = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c)
-# Alternatively you can change the I2C address of the device with an addr parameter:
-#display = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c, addr=0x31)
+display = adafruit_sh1106.SH1106_SPI(128, 64, spi_bus, dc, reset, cs, external_vcc=True, baudrate=24000000)
 
 # Clear the display.  Always call show after changing pixels to make the display
 # update visible!
 display.fill(0)
 display.show()
 
-# Set a pixel in the origin 0,0 position.
-display.pixel(0, 0, 1)
-# Set a pixel in the middle 64, 16 position.
-display.pixel(64, 16, 1)
-# Set a pixel in the opposite 127, 31 position.
-display.pixel(127, 31, 1)
+# Set a pixel in the origin 1,1 position as 0,0 is off the edge of the display and not visible.
+display.pixel(1, 1, 1)
+# Set a pixel in the middle 64,32 position.
+display.pixel(64, 32, 1)
+# Set a pixel in the opposite 125,63 position 127,63 is off the edge of the display and not visible.
+display.pixel(125, 63, 1)
 display.show()
+
+while True: # Keep displaying pixels
+    print("")

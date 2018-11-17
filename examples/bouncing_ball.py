@@ -1,15 +1,20 @@
 import board
 import busio
-import adafruit_ssd1306
+import digitalio
+import adafruit_sh1106
 
-# Create the I2C interface.
-i2c = busio.I2C(board.SCL, board.SDA)
+# Create the SPI interface.
+spi_bus = busio.SPI(board.SCK, board.MOSI)
 
-# Create the SSD1306 OLED class.
+# Setup the SPI pins
+dc = digitalio.DigitalInOut(board.A22)
+reset = digitalio.DigitalInOut(board.A23)
+cs = digitalio.DigitalInOut(board.A27)
+
+# Create the SH1106 OLED class.
 # The first two parameters are the pixel width and pixel height.  Change these
 # to the right size for your display!
-oled = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c)
-
+oled = adafruit_sh1106.SH1106_SPI(128, 64, spi_bus, dc, reset, cs, external_vcc=True, baudrate=24000000)
 
 # Helper function to draw a circle from a given position with a given radius
 # This is an implementation of the midpoint circle algorithm,
@@ -51,6 +56,7 @@ radius = 8
 oled.fill(0)
 # we just blanked the framebuffer. to push the framebuffer onto the display, we call show()
 oled.show()
+
 while True:
     # undraw the previous circle
     draw_circle(center_x, center_y, radius, col=0)
@@ -80,4 +86,5 @@ while True:
     # draw the new circle
     draw_circle(center_x, center_y, radius)
     # show all the changes we just made
+
     oled.show()
