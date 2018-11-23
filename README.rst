@@ -70,7 +70,7 @@ Contributing
 ============
 
 Contributions are welcome! Please read our `Code of Conduct
-<https://github.com/adafruit/adafruit_CircuitPython_SSD1306/blob/master/CODE_OF_CONDUCT.md>`_
+<https://github.com/adafruit/adafruit_CircuitPython_SH1106/blob/master/CODE_OF_CONDUCT.md>`_
 before contributing to help this project stay welcoming.
 
 Building locally
@@ -98,7 +98,7 @@ Then run the build:
 
 .. code-block:: shell
 
-    circuitpython-build-bundles --filename_prefix adafruit-circuitpython-ssd1306 --library_location .
+    circuitpython-build-bundles --filename_prefix adafruit-circuitpython-sh1106 --library_location .
 
 Sphinx documentation
 -----------------------
