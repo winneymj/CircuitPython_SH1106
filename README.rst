@@ -1,24 +1,16 @@
-Introduction
-============
+CircuitPython SH1106 Driver
+===========================
 
-.. image:: https://readthedocs.org/projects/adafruit-circuitpython-ssd1306/badge/?version=latest
-    :target: https://circuitpython.readthedocs.io/projects/ssd1306/en/latest/
-    :alt: Documentation Status
+|docs| |version| |ci| |license_type|
 
-.. image:: https://img.shields.io/discord/327254708534116352.svg
-    :target: https://discord.gg/nBQh6qu
-    :alt: Discord
+.. image:: sh1106.jpg
+    :width: 300px
 
-.. image:: https://travis-ci.org/adafruit/Adafruit_CircuitPython_SSD1306.svg?branch=master
-    :target: https://travis-ci.org/adafruit/Adafruit_CircuitPython_SSD1306
-    :alt: Build Status
-
-Adafruit CircuitPython driver for SSD1306 OLED displays.
+CircuitPython driver for SH1106 OLED displays.
 
 This driver is based on the SSD1306 driver in the MicroPython source but differs
 by supporting hardware I2C interfaces and Adafruit CircuitPython API.  For a
 MicroPython machine API compatible library see: https://github.com/adafruit/micropython-adafruit-ssd1306
-
 
 Dependencies
 =============
@@ -38,26 +30,26 @@ Usage Example
 
   # Basic example of clearing and drawing pixels on a SSD1306 OLED display.
   # This example and library is meant to work with Adafruit CircuitPython API.
-  # Author: Tony DiCola
+  # Author: Mark Winney heavily based on SSD1036 driver by Tony DiCola
   # License: Public Domain
 
   # Import all board pins.
   from board import SCL, SDA
   import busio
 
-  # Import the SSD1306 module.
-  import adafruit_ssd1306
+  # Import the SH1106 module.
+  import sh1106
 
 
   # Create the I2C interface.
   i2c = busio.I2C(SCL, SDA)
 
-  # Create the SSD1306 OLED class.
+  # Create the SH1106 OLED class.
   # The first two parameters are the pixel width and pixel height.  Change these
   # to the right size for your display!
-  display = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c)
+  display = sh1106.SH1106_I2C(128, 32, i2c)
   # Alternatively you can change the I2C address of the device with an addr parameter:
-  #display = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c, addr=0x31)
+  #display = sh1106.SH1106_I2C(128, 32, i2c, addr=0x3c)
 
   # Clear the display.  Always call show after changing pixels to make the display
   # update visible!
@@ -70,7 +62,7 @@ Contributing
 ============
 
 Contributions are welcome! Please read our `Code of Conduct
-<https://github.com/adafruit/adafruit_CircuitPython_SSD1306/blob/master/CODE_OF_CONDUCT.md>`_
+<https://github.com/winneymj/CircuitPython_SH1106/blob/master/CODE_OF_CONDUCT.md>`_
 before contributing to help this project stay welcoming.
 
 Building locally
@@ -98,7 +90,7 @@ Then run the build:
 
 .. code-block:: shell
 
-    circuitpython-build-bundles --filename_prefix adafruit-circuitpython-ssd1306 --library_location .
+    circuitpython-build-bundles --filename_prefix circuitpython-sh1106 --library_location .
 
 Sphinx documentation
 -----------------------
