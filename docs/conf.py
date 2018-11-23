@@ -32,9 +32,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Adafruit SSD1306 Library'
-copyright = u'2017 Michael McWethy'
-author = u'Michael McWethy'
+project = u'SH1106 Library'
+copyright = u'2018 Mark Winney'
+author = u'Mark Winney'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -101,7 +101,7 @@ else:
 html_static_path = ['_static']
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'AdafruitSsd1306Librarydoc'
+htmlhelp_basename = 'SH1106Librarydoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -127,7 +127,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'AdafruitSSD1306Library.tex', u'AdafruitSSD1306 Library Documentation',
+    (master_doc, 'SH1106Library.tex', u'SH1106 Library Documentation',
      author, 'manual'),
 ]
 
@@ -136,7 +136,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'AdafruitSSD1306library', u'Adafruit SSD1306 Library Documentation',
+    (master_doc, 'SH1106Library', u'SH1106 Library Documentation',
      [author], 1)
 ]
 
@@ -146,7 +146,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'AdafruitSSD1306Library', u'Adafruit SSD1306 Library Documentation',
-     author, 'AdafruitSSD1306Library', 'One line description of project.',
+    (master_doc, 'SH1106Library', u'SH1106 Library Documentation',
+     author, 'SH1106Library', 'One line description of project.',
      'Miscellaneous'),
 ]
