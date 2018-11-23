@@ -3,7 +3,7 @@ CircuitPython SH1106 Driver
 
 |docs| |version| |ci| |license_type|
 
-.. image:: sh1106.jpg
+.. image:: docs/sh1106.jpg
     :width: 300px
 
 CircuitPython driver for SH1106 OLED displays.
@@ -114,3 +114,31 @@ Now, once you have the virtual environment activated:
 This will output the documentation to ``docs/_build/html``. Open the index.html in your browser to
 view them. It will also (due to -W) error out on any warning like Travis will. This is a good way to
 locally verify it will pass.
+
+License
+-------
+
+This project is licensed under the `MIT License <https://github.com/mmabey/CircuitPython_HCSR04/blob/master/LICENSE>`_.
+
+
+.. |docs| image:: https://readthedocs.org/projects/adafruit-soundboard/badge/
+    :alt: Documentation Status
+    :target: `Read the Docs`_
+
+.. |version| image:: https://img.shields.io/github/release/winneymj/CircuitPython_SH1106/all.svg
+    :alt: Release Version
+    :target: https://github.com/winneymj/CircuitPython_SH1106
+
+.. |ci| image:: https://travis-ci.org/winneymj/CircuitPython_SH1106.svg
+    :alt: CI Build Status
+    :target: https://travis-ci.org/winneymj/CircuitPython_SH1106
+
+.. |license_type| image:: https://img.shields.io/github/license/winneymj/CircuitPython_SH1106.svg
+    :alt: License: MIT
+    :target: `GitHub`_
+
+.. _GitHub: https://github.com/winneymj/CircuitPython_SH1106
+
+.. _CircuitPython: https://github.com/adafruit/circuitpython
+
+.. _Read the Docs: http://circuitpython-hcsr04.readthedocs.io/
