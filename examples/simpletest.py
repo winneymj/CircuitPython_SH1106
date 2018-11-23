@@ -3,6 +3,7 @@
 # Author: Tony DiCola
 # License: Public Domain
 
+import time
 # Import all board pins.
 import board
 import digitalio
@@ -37,5 +38,5 @@ display.pixel(64, 32, 1)
 display.pixel(125, 63, 1)
 display.show()
 
-while True: # Keep displaying pixels
-    print("")
+while True:
+    time.sleep(1)
