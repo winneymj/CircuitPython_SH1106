@@ -13,11 +13,11 @@ Introduction
     :target: https://travis-ci.org/adafruit/Adafruit_CircuitPython_SSD1306
     :alt: Build Status
 
-Adafruit CircuitPython driver for SSD1306 OLED displays.
+Adafruit CircuitPython driver for SH1106 OLED displays.
 
-This driver is based on the SSD1306 driver in the MicroPython source but differs
+This driver is based on the SH1106 driver in the MicroPython source but differs
 by supporting hardware I2C interfaces and Adafruit CircuitPython API.  For a
-MicroPython machine API compatible library see: https://github.com/adafruit/micropython-adafruit-ssd1306
+MicroPython machine API compatible library see: https://github.com/adafruit/micropython-adafruit-sh1106
 
 
 Dependencies
@@ -36,28 +36,28 @@ Usage Example
 
 .. code-block:: python3
 
-  # Basic example of clearing and drawing pixels on a SSD1306 OLED display.
+  # Basic example of clearing and drawing pixels on a SH1106 OLED display.
   # This example and library is meant to work with Adafruit CircuitPython API.
-  # Author: Tony DiCola
+  # Author: Mark Winney forked from Tony DiCola work
   # License: Public Domain
 
   # Import all board pins.
   from board import SCL, SDA
   import busio
 
-  # Import the SSD1306 module.
-  import adafruit_ssd1306
+  # Import the SH1106 module.
+  import adafruit_sh1106
 
 
   # Create the I2C interface.
   i2c = busio.I2C(SCL, SDA)
 
-  # Create the SSD1306 OLED class.
+  # Create the SH1106 OLED class.
   # The first two parameters are the pixel width and pixel height.  Change these
   # to the right size for your display!
-  display = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c)
+  display = adafruit_sh1106.SH1106_I2C(128, 32, i2c)
   # Alternatively you can change the I2C address of the device with an addr parameter:
-  #display = adafruit_ssd1306.SSD1306_I2C(128, 32, i2c, addr=0x31)
+  #display = adafruit_sh1106.SH1106_I2C(128, 32, i2c, addr=0x3c)
 
   # Clear the display.  Always call show after changing pixels to make the display
   # update visible!
