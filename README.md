@@ -1,1 +1,1 @@
-# Adafruit_Python_SH1106
+# CircuitPython_SH1106
