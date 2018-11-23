@@ -3,7 +3,7 @@ CircuitPython SH1106 Driver
 
 |docs| |version| |ci| |license_type|
 
-.. image:: sh1106.jpg
+.. image:: docs/sh1106.jpg
     :width: 300px
 
 CircuitPython driver for SH1106 OLED displays.
