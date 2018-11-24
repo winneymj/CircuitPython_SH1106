@@ -31,7 +31,6 @@ MicroPython SH1106 OLED driver, I2C and SPI interfaces
 import time
 
 from micropython import const
-from adafruit_bus_device import i2c_device, spi_device
 import framebuf
 
 __version__ = "0.0.0-auto.0"
@@ -107,7 +106,7 @@ class _SH1106:
                 SET_PAGE_ADDRESS, # Page address 0
                 SET_COMSCANDEC, # COMSCANDEC
                 SET_LOW_COLUMN, # SETLOWCOLUMN
-                SET_HIGH_COLUMN, # SETHIGHCOLUMN 
+                SET_HIGH_COLUMN, # SETHIGHCOLUMN
                 SET_COM_PIN_CFG, 0x02 if self.height == 32 else 0x12, # SETCOMPINS
                 SET_CONTRAST, 0x9f if self.external_vcc else 0xcf, # Contrast maximum
                 SET_SEG_REMAP, # SET_SEGMENT_REMAP
@@ -134,7 +133,7 @@ class _SH1106:
         if invert:
             self.write_cmd(SET_NORM_INV)
         else:
-            self.write_cmd(SET_NORM)            
+            self.write_cmd(SET_NORM)
 
     def write_framebuf(self):
         """Derived class must implement this"""
@@ -200,7 +199,7 @@ class SH1106_I2C(_SH1106):
         write_cmd = self.write_cmd
         tmp_buf = bytearray(1)
         tmp_buf[0] = 0x40 # Co = 0, D/C = 1
-        
+
         local_buffer = bytearray(self.width+1)
 
         for page in range(0, 8): # Pages
@@ -208,14 +207,14 @@ class SH1106_I2C(_SH1106):
             write_cmd(0xB0 + page) # set page address
             write_cmd(0x02) # set lower column address
             write_cmd(0x10) # set higher column address
-            
-            # Not sure if there is a way to do this without a local buffer 
+
+            # Not sure if there is a way to do this without a local buffer
             # as we need to peprend a databyte onto the framebuffer data being sent.
             local_buffer = self.buffer[page_mult:page_mult + self.width + 2]
             local_buffer[:0] = tmp_buf # prepend Co = 0, D/C = 1
 
             write(self.addr, local_buffer)
-        
+
         self.i2c_bus.unlock()
 
 #pylint: disable-msg=too-many-arguments
@@ -236,6 +235,7 @@ class SH1106_SPI(_SH1106):
                  external_vcc=False, baudrate=8000000, polarity=0, phase=0):
         self.rate = 10 * 1024 * 1024
         dc.switch_to_output(value=0)
+        cs.switch_to_output(value=1)
         self.spi_bus = spi
         self.spi_bus.try_lock()
         self.spi_bus.configure(baudrate=baudrate, polarity=polarity, phase=phase)
@@ -256,15 +256,15 @@ class SH1106_SPI(_SH1106):
 
         self.spi_bus.try_lock()
         spi_write = self.spi_bus.write
-        write_cmd = self.write_cmd
+        write = self.write_cmd
 
         for page in range(0, 8): # Pages
             page_mult = (page << 7)
-            self.write_cmd(0xB0 + page) # set page address
-            self.write_cmd(0x02) # set lower column address
-            self.write_cmd(0x10) # set higher column address
-            
+            write(0xB0 + page) # set page address
+            write(0x02) # set lower column address
+            write(0x10) # set higher column address
+
             self.dc_pin.value = 1
             spi_write(self.buffer, start=page_mult, end=page_mult + self.width)
-        
+
         self.spi_bus.unlock()
