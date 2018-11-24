@@ -18,21 +18,21 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='adafruit-circuitpython-ssd1306',
+    name='circuitpython-sh1106',
 
     use_scm_version=True,
     setup_requires=['setuptools_scm'],
 
-    description='CircuitPython library for SSD1306 OLED displays.',
+    description='CircuitPython library for SH1106 OLED displays.',
     long_description=long_description,
     long_description_content_type='text/x-rst',
 
     # The project's main homepage.
-    url='https://github.com/adafruit/Adafruit_CircuitPython_SSD1306',
+    url='https://github.com/winneymj/CircuitPython_SH1106',
 
     # Author details
-    author='Adafruit Industries',
-    author_email='circuitpython@adafruit.com',
+    author='Mark Winney',
+    author_email='winneymj@gmail.com',
 
     install_requires=['Adafruit-Blinka', 'adafruit-circuitpython-busdevice'],
 
@@ -52,9 +52,9 @@ setup(
     ],
 
     # What does your project relate to?
-    keywords='adafruit ssd1306 oled displays hardware micropython circuitpython',
+    keywords='adafruit sh1106 oled displays hardware micropython circuitpython',
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    py_modules=['adafruit_ssd1306'],
+    py_modules=['circuitpython_sh1106'],
 )
