@@ -14,7 +14,8 @@ cs = digitalio.DigitalInOut(board.A27)
 # Create the SH1106 OLED class.
 # The first two parameters are the pixel width and pixel height.  Change these
 # to the right size for your display!
-oled = adafruit_sh1106.SH1106_SPI(128, 64, spi_bus, dc, reset, cs, external_vcc=True, baudrate=24000000)
+oled = adafruit_sh1106.SH1106_SPI(128, 64, spi_bus, dc, reset, cs, external_vcc=True,
+                                    baudrate=24000000)
 
 # Helper function to draw a circle from a given position with a given radius
 # This is an implementation of the midpoint circle algorithm,

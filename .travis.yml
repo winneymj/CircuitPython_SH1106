@@ -26,8 +26,8 @@ install:
 - pip install --force-reinstall pylint==1.9.2
 script:
 - pylint sh1106.py
-- ([[ ! -d "examples" ]] || pylint --disable=missing-docstring,invalid-name,bad-whitespace
-  examples/*.py)
+#- ([[ ! -d "examples" ]] || pylint --disable=missing-docstring,invalid-name,bad-whitespace
+#  examples/*.py)
 - circuitpython-build-bundles --filename_prefix circuitpython-sh1106 --library_location
   .
 - cd docs && sphinx-build -E -W -b html . _build/html && cd ..
