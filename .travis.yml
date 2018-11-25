@@ -30,4 +30,4 @@ script:
 #  examples/*.py)
 - circuitpython-build-bundles --filename_prefix circuitpython-sh1106 --library_location
   .
-#- cd docs && sphinx-build -E -W -b html . _build/html && cd ..
+- cd docs && sphinx-build -E -W -b html . _build/html && cd ..
