@@ -23,8 +23,6 @@ Table of Contents
 .. toctree::
     :caption: Tutorials
 
-    CircuitPython Hardware: SH1106 OLED Display
-
 .. toctree::
     :caption: Related Products
 
