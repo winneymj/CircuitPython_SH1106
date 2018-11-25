@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 """
-`adafruit_sh1106`
+`sh1106`
 ====================================================
 
 MicroPython SH1106 OLED driver, I2C and SPI interfaces
