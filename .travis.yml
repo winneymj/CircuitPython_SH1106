@@ -26,8 +26,9 @@ install:
 - pip install --force-reinstall pylint==1.9.2
 script:
 - pylint sh1106.py
-#- ([[ ! -d "examples" ]] || pylint --disable=missing-docstring,invalid-name,bad-whitespace
-#  examples/*.py)
 - circuitpython-build-bundles --filename_prefix circuitpython-sh1106 --library_location
   .
 - cd docs && sphinx-build -E -W -b html . _build/html && cd ..
+env:
+  global:
+    secure: e6QIKdXPh6x/F8GyQ+KjMNF0BV2wfwoA2C26Bw8vEUgYxRWFfXzca01Iz+IAR6mFltK0z6bFSyo2M0Mfg28ipFbEGc9EOmrOLDborXFQCKxeJrUF5Nmi8PFDFAyKyivAe6HJihoXwQdSHnO2ZT+qvc9kTGhas0zwBK7lpisPo9SBfys/pKmqnQqAbJL2hq2xTXuHhRmZTxLt00rxJ8j7p5pxTOGaD7WcM+MQNLUPsqawVjmfWL1BdFp47g2/CNsmH1rkFkINdKAJS35vNO56hn7m/HIZ+wHiFqW1WjxlBe+1LfNyzpgLnyqvrgcihkSoEytv0V9o5r40gUY9MhYkcltPYwGirKfq8Tx1CRSr90MmQfPBUCLcRSsQSz7ks/f2zCzG2dd7YPgrkIjgap5ZjLFc5RdixKV5/UU73HGYgRSdgJXEtEchwYrW5WYwWfhCQI2PzuhkNLbVxIZGp+jYWzz8dH8I1pm2Oa/PNEsFLwKAM0yhaG+hqCbrFERd5uaoS2DmHlOUUWUkGY32klRiBzDRQoPVLtLI++iapiU/U17DaychONgb5aunHUlKmduoy1grU+Ol6Xe6VoMp8TeFd20pf3yp5lqvL/dWVJw1YdvoFzqbZRQGJSUjxeGSCT7MrmrY08yEfX3iomtrGxmr+j/PE6DkJ2CumT0BQqG/nVA=
